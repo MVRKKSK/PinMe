@@ -6,6 +6,7 @@ const app = express();
 
 dotenv.config();
 
+app.use(express.json())
 mongoose.connect(process.env.MONGODB_URL , {useNewUrlParser: true , useUnifiedTopology: true}).then(()=>{
     console.log("mongoose is connected")
 }).catch((error) =>{
