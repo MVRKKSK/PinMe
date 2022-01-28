@@ -1,6 +1,7 @@
-import React , { useState } from 'react';
-import ReactMapGL from 'react-map-gl';
+import React, { useState } from 'react';
+import ReactMapGL, { Marker , Popup } from 'react-map-gl';
 import './App.css';
+import {Room} from '@material-ui/icons'
 
 function App() {
   const [viewport, setViewport] = useState({
@@ -12,12 +13,35 @@ function App() {
   });
 
   return (
-    <ReactMapGL
-      {...viewport}
-    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-      onViewportChange={nextViewport => setViewport(nextViewport)}
-      mapStyle = "mapbox://styles/mvrkksk/ckyydrcgk002m14ntksl7qknt"
-    />
+    <div>
+      <ReactMapGL {...viewport}
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+        onViewportChange={nextViewport => setViewport(nextViewport)}
+        mapStyle="mapbox://styles/mvrkksk/ckyydrcgk002m14ntksl7qknt">
+
+
+        <Marker latitude={37.78} longitude={-122.41} offsetLeft={-20} offsetTop={-10}>
+        <Room style = {{fontSize: 30 , color:"blue"}} />
+        
+        </Marker>
+        <Popup
+          latitude={37.78}
+          longitude={-122.41}
+          closeButton={true}
+          closeOnClick={false}
+          anchor="top" >
+          <div className = "popup_main">
+            <p className='username-popup'>User:<span className='username-popup'>Kautilya</span></p>
+            <p className='username-popup'>Title:<span className='username-popup'>Kautilya</span></p>
+            <p className='username-popup'>Description:<span className='username-popup'>Kautilya</span></p>
+            <p className='username-popup'>Rating:<span className='username-popup'>Kautilya</span></p>
+            
+          </div>
+        </Popup>
+         
+
+      </ReactMapGL>
+    </div>
   );
 }
 
