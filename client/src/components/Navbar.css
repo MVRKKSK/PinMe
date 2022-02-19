@@ -1,0 +1,13 @@
+.image-png-logo{
+    width: 180px;
+    height: 180px;
+
+}
+
+@media (max-width: 639px) {
+    .image-png-logo{
+        width: 100px;
+        height: 100px;
+
+    }
+}
